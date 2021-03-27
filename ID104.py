@@ -1,3 +1,5 @@
+import sys
+
 def simulation(n, P):
 
     previous = {'1': 1}
@@ -26,12 +28,13 @@ display = []
 while True:
 
     in_ = input()
-    if len(in_) == 0:
+    if (len(in_) == 0):
         for x in display:
             print(x)
         break
     
-    seq = [float(x) for x in in_.split(' ')]
+    seq = [float(x) for x in in_.strip().split(' ')]
+    
     if len(seq) == 1:
         n = int(seq[0])
         t = 0
@@ -43,3 +46,5 @@ while True:
     if len(P) == n:
         out = simulation(n, P)
         display.append(out)
+        
+sys.exit(0)

@@ -1,16 +1,15 @@
 probs = []
-lines = 0
 countries = {}
+i = 0
 
 while True:
-
-    in_ = input()
+    
     if len(countries) < 16:
-        countries[lines] = in_.strip()
+        countries[i] = str(input())
     else:
-        seq = [int(x)/100 for x in in_.strip().split(' ')]
-        probs.append(seq)       
-    lines += 1
+        p = [float(x)/100 for x in input().strip().split()]
+        probs.append(p)
+    i += 1
     
     if len(probs) == 16:
         
@@ -47,9 +46,9 @@ while True:
                 win_probs.append(sum([probs[g][x]*final_probs[x] for x in range(8, 16)])* final_probs[g])
             else:
                 win_probs.append(sum([probs[g][x]*final_probs[x] for x in range(8)])* final_probs[g])
-                
-        for k,v in countries.items():
-            print('{} p={}%'.format(v, round(win_probs[k]*100, 2)))
         break
+                
+for k,v in countries.items():
+    print("{0:10} p={1:.2f}%".format(str(v), win_probs[k]*100))
         
         

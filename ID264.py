@@ -15,13 +15,13 @@ def analyze(in_):
 
 collect = []
 while True:
-    in_ = input()
     
-    if len(in_) == 0:
+    in_= stdin.readline()
+    in_ = [int(x) for x in in_.strip().split()]
+    
+    if len(in_) == "":
         for x in collect:
-            print(x)
+            stdout.write("TERM {} IS {}/{}\n".format(in_, r, c))
         break
-    
-    in_ = int(in_)
+
     r, c = analyze(in_)
-    collect.append(f'TERM {in_} IS {r}/{c}')

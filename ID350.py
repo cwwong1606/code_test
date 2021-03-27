@@ -1,11 +1,13 @@
 def counting(Z, I, M, L):
     memory = [L]
+    last = L
+    start = L
 
     while True:
-        tmp = (memory[-1]*Z + I) % M
+        last = (last*Z + I) % M
 
-        if tmp not in memory:
-             memory.append(tmp)
+        if start != last:
+             memory.append(last)
         else:
             break
 
@@ -14,14 +16,16 @@ def counting(Z, I, M, L):
 collect = []
 t = 0
 while True:
+    
     in_ = input()
-    Z, I, M, L = [int(x) for x in in_.strip().split(' ')]
+    seq = [int(x) for x in in_.strip().split(' ')]
+    Z, I, M, L = seq[0], seq[1], seq[2], seq[3]
     t += 1
     
-    if (Z == 0)&(I == 0)&(M == 0)&(L == 0):
+    if sum(seq) == 0:
         for x in collect:
             print(x)
         break
 
     cycle = counting(Z, I, M, L)
-    collect.append(f'Case {t}: {cycle}')
+    collect.append(f'Case {t}: {cycle}')    
